@@ -1,0 +1,103 @@
+{
+  "source": "NFX 46-020",
+  "editeur": "LICIEL",
+  "typesReperage": {
+    "A": {
+      "label": "Liste A",
+      "categories": [
+        {
+          "libelle": "Couvertures, Toitures, Terrasses et étanchéités",
+          "composants": [
+            {
+              "libelle": "Plaques en fibres-ciment (y compris plaques \"ardoisées\")"
+            },
+            {
+              "libelle": "Plaques en matériaux bitumineux"
+            }
+          ]
+        },
+        {
+          "libelle": "Flocages",
+          "composants": [
+            {
+              "libelle": "Flocages"
+            }
+          ]
+        }
+      ]
+    },
+
+    "AB": {
+      "label": "Liste A / B",
+      "categories": [
+        {
+          "libelle": "Calorifugeages",
+          "composants": [
+            {
+              "libelle": "Calorifugeages"
+            }
+          ]
+        },
+        {
+          "libelle": "Faux plafonds",
+          "composants": [
+            {
+              "libelle": "Dalles de faux plafond"
+            }
+          ]
+        }
+      ]
+    },
+
+    "C": {
+      "label": "Liste C",
+      "categories": [
+        {
+          "libelle": "Parois verticales intérieures",
+          "composants": [
+            {
+              "libelle": "Enduit à base de plâtre lissé ou taloché"
+            },
+            {
+              "libelle": "Enduit à base de ciment projeté"
+            },
+            {
+              "libelle": "Joint de dilatation"
+            },
+            {
+              "libelle": "Joint d'assemblage"
+            }
+          ]
+        },
+        {
+          "libelle": "Planchers, dalles",
+          "composants": [
+            {
+              "libelle": "Dalles de sol"
+            },
+            {
+              "libelle": "Ragréage, lissage"
+            }
+          ]
+        },
+        {
+          "libelle": "Aménagements, voiries et réseaux divers",
+          "composants": [
+            {
+              "libelle": "Élément de canalisation enterrée en fibres-ciment"
+            },
+            {
+              "libelle": "Enrobé bitumineux des couches de voirie (juste partie bitume)"
+            },
+            {
+              "libelle": "Asphalte"
+            },
+            {
+              "libelle": "Élément en fibres-ciment (jardinières, bordures…)"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

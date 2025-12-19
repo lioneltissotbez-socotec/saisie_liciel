@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>LICIEL – Saisie terrain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>LICIEL – Saisie terrain</h1>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('pieces')">Pièces</button>
+  <button class="tab" onclick="showTab('zpso')">ZPSO</button>
+</div>
+
+<!-- ================= PIECES ================= -->
+<section id="tab-pieces">
+  <div id="pieces"></div>
+
+  <button class="primary" onclick="addPiece()">➕ Ajouter une pièce</button>
+
+  <div class="export">
+    <button onclick="exportPieces()">Table_General_Pieces_Toutes.xml</button>
+    <button onclick="exportPhotos()">Table_General_Photo.xml</button>
+    <button onclick="downloadAllPhotos()">Télécharger photos</button>
+  </div>
+</section>
+
+<!-- ================= ZPSO ================= -->
+<section id="tab-zpso" class="hidden">
+
+  <div class="card">
+    <label>Type de repérage</label>
+    <select id="zpsoType" onchange="updateOuvrages()">
+      <option value="">Libre</option>
+      <option value="A">Liste A</option>
+      <option value="AB">Liste A / B</option>
+      <option value="C">Liste C</option>
+    </select>
+
+    <label>Ouvrage</label>
+    <select id="zpsoOuvrage" onchange="updateParties()">
+      <option value="">Libre</option>
+    </select>
+
+    <label>Partie à inspecter</label>
+    <select id="zpsoPartie">
+      <option value="">Libre</option>
+    </select>
+
+    <label>Conclusion</label>
+    <select id="zpsoResultat">
+      <option>Susceptible de contenir de l'amiante</option>
+      <option>Ne contient pas d'amiante</option>
+      <option>Non concluant</option>
+    </select>
+
+    <label>Justification</label>
+    <textarea id="zpsoJustification"></textarea>
+
+    <label>État de conservation</label>
+    <input id="zpsoEtat">
+
+    <label>Liste CSP</label>
+    <input id="zpsoCSP">
+
+    <h3>Localisations</h3>
+    <div id="zpsoLocalisations"></div>
+
+    <button class="primary" onclick="addZPSO()">➕ Ajouter ZPSO</button>
+    <button onclick="exportZPSO()">Table_Z_Amiante.xml</button>
+  </div>
+
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
