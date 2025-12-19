@@ -25,21 +25,42 @@ function addPiece(){
 }
 
 function renderPieces(){
-  const c=document.getElementById("pieces");
-  c.innerHTML="";
-  pieces.forEach((p,i)=>{
-    c.innerHTML+=`
+  const c = document.getElementById("pieces");
+  c.innerHTML = "";
+
+  pieces.forEach((p, i) => {
+    c.innerHTML += `
       <div class="card">
+        <div class="small">Clef : ${p.clef}</div>
+
         <label>Bâtiment</label>
-        <input oninput="pieces[${i}].bat=this.value">
+        <input
+          value="${p.bat}"
+          oninput="pieces[${i}].bat = this.value"
+        >
+
         <label>Pièce</label>
-        <input oninput="pieces[${i}].loc=this.value">
+        <input
+          value="${p.loc}"
+          oninput="pieces[${i}].loc = this.value"
+        >
+
         <label>Photos</label>
-        <input type="file" multiple accept="image/*"
-          onchange="addPhoto(${i},this)">
-      </div>`;
+        <input
+          type="file"
+          multiple
+          accept="image/*"
+          onchange="addPhoto(${i}, this)"
+        >
+
+        <div>
+          ${p.photos.map(ph => `<span class="pill">${ph.name}</span>`).join("")}
+        </div>
+      </div>
+    `;
   });
 }
+
 
 function addPhoto(i,input){
   [...input.files].forEach(f=>{
@@ -149,3 +170,4 @@ function showTab(t){
 }
 
 renderPieces();renderZPSOLoc();
+
