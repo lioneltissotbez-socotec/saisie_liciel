@@ -20,19 +20,9 @@ function clef(){
 let pieces=[];
 
 function addPiece(){
-  pieces.push({
-    clef: clef(),
-    bat: "",
-    loc: "",
-    visite: true,
-    justification: "",
-    moyens: "",
-    photos: []
-  });
-  renderPieces();
-  renderZPSOLoc();
+  pieces.push({clef:clef(),bat:"",loc:"",photos:[]});
+  renderPieces();renderZPSOLoc();
 }
-
 
 function renderPieces(){
   const c = document.getElementById("pieces");
@@ -55,32 +45,6 @@ function renderPieces(){
           oninput="pieces[${i}].loc = this.value"
         >
 
-        <label>Statut de visite</label>
-        <select
-          onchange="pieces[${i}].visite = (this.value === 'visite'); renderPieces();"
-        >
-          <option value="visite" ${p.visite ? "selected" : ""}>Visité</option>
-          <option value="non" ${!p.visite ? "selected" : ""}>Non visité</option>
-        </select>
-
-        ${
-          !p.visite
-          ? `
-          <div class="nonvisite">
-            <label>Justification (non visite)</label>
-            <textarea
-              oninput="pieces[${i}].justification = this.value"
-            >${p.justification}</textarea>
-
-            <label>Moyens à mettre en œuvre</label>
-            <textarea
-              oninput="pieces[${i}].moyens = this.value"
-            >${p.moyens}</textarea>
-          </div>
-          `
-          : ""
-        }
-
         <label>Photos</label>
         <input
           type="file"
@@ -98,17 +62,16 @@ function renderPieces(){
 }
 
 
-
 function addPhoto(i,input){
   [...input.files].forEach(f=>{
-    s[i].photos.push({file:f,name:f.name});
+    pieces[i].photos.push({file:f,name:f.name});
   });
 }
 
-/* ==================== EXPORT S ==================== */
-function exports(){
-  let x=`<?xml version="1.0" encoding="windows-1252"?><LiTable_General_s_Toutes>`;
-  s.forEach((p,i)=>{
+/* ==================== EXPORT PIECES ==================== */
+function exportPieces(){
+  let x=`<?xml version="1.0" encoding="windows-1252"?><LiTable_General_Pieces_Toutes>`;
+  pieces.forEach((p,i)=>{
     x+=`<LiItem_table_General_Pieces_Toutes>
       <LiColonne_id_classement_champs>${pad(i,5)}</LiColonne_id_classement_champs>
       <LiColonne_ClefComposant>${p.clef}</LiColonne_ClefComposant>
@@ -188,9 +151,7 @@ function exportZPSO(){
       <LiColonne_Id_Prelevement>${z.id}</LiColonne_Id_Prelevement>
       <LiColonne_Id_Prelevement_Int_txt>${z.int}</LiColonne_Id_Prelevement_Int_txt>
       <LiColonne_Resultats>${toWin1252(z.res)}</LiColonne_Resultats>
-      <LiColonne_Justification>${toWin1252(p.visite ? "" : p.justification)}</LiColonne_Justification>
-<LiColonne_MoyenAMettreEnOeuvre>${toWin1252(p.visite ? "" : p.moyens)}</LiColonne_MoyenAMettreEnOeuvre>
-
+      <LiColonne_Justification>${toWin1252(z.jus)}</LiColonne_Justification>
       <LiColonne_Etat_Conservation>${toWin1252(z.et)}</LiColonne_Etat_Conservation>
       <LiColonne_ListeCSP_amiante>${toWin1252(z.csp)}</LiColonne_ListeCSP_amiante>
       <LiColonne_Reperage_3>${z.id}</LiColonne_Reperage_3>
@@ -209,5 +170,3 @@ function showTab(t){
 }
 
 renderPieces();renderZPSOLoc();
-
-
